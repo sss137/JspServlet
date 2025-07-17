@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!--1. a 태그 GET 방식으로 요청하기-->
+<a href="/01_servlet/RequestServlet">RequestServlet으로 요청하기</a>
+<br>
+
+<!--2. 바뀐 서블릿의 요청 주소(Request URL)로 다시 요청하기-->
+<a href="/01_servlet/hello">/hello로 요청하기</a>
+<br>
+
+<!--3. 패턴(*.do)으로 바뀐 서블릿의 요청 주소(Request URL)로 다시 요청하기-->
+<a href="/01_servlet/a.do">a.do로 요청하기</a>
+<br>
+
+<a href="/01_servlet/b.do">b.do로 요청하기</a>
+<br>
+
+<!--4. 요청 메시지 분석-->
+<a href="/01_servlet/a/b/c.do">요청 메시지 분석</a>
+<br>
+
+<!--5. 요청 파라미터-->
+<a href="/01_servlet/a/b/c.do?p1=100&p2=abc&p3=가나다">요청 파라미터</a>
+<br>
+
+<form action="/01_servlet/a/b/c.do" method="post">
+  <input type="text" name="p1" placeholder="정수">
+  <br>
+  <input type="text" name="p2" placeholder="문자열">
+  <br>
+  <input type="text" name="p3" placeholder="문자열">
+  <br>
+  <input type="text" name="p4" placeholder="문자열">   <!--빈칸으로 보내도 name이 존재하기 때문에 null이 아님-->
+  <br>
+  <input type="submit" value="제출">
+  <button type="submit">제출</button>
+</form>
+
+<!--JS 복습 공부-->
+<button id="btn-request" type="button" data-p1="100">요청</button>
+<input id="p4" type="hidden" value="xyz">
+<script>
+  const btnRequest = document.getElementById("btn-request");
+  const p4 = document.getElementById("p4");
+  btnRequest.addEventListener("click", (e) => {
+    const {target} = e;
+    location.href = `/01_servlet/a/b/c.do?p1=${target.dataset.p1}&p2=${target.textContent}&p3=${target.id}&p4=${p4.value}`;
+  })
+  
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

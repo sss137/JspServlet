@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <!-- RequestExServlet으로 요청합니다. 이름이 입력되지 않거나, 이메일이 잘못된 형식을 가지고 있으면 요청을 막습니다. -->
+  <form id="join-form"
+        method="post"
+        action="/01_servlet/RequestExServlet">
+    <div class="inp-wrap">
+      <label for="name">이름</label>
+      <input type="text" name="name" id="name">
+    </div>
+    <div class="inp-wrap">
+      <label for="email">이메일</label>
+      <input type="text" name="email" id="email">
+    </div>
+    <div class="inp-wrap">
+      <input type="radio" name="gender" id="none" value="none" checked>
+      <label for="none">선택안함</label>
+      <input type="radio" name="gender" id="man" value="man">
+      <label for="man">남자</label>
+      <input type="radio" name="gender" id="woman" value="woman">
+      <label for="woman">여자</label>
+    </div>
+    <div class="inp-wrap">
+      <input type="checkbox" name="hobbies" id="game" value="game">
+      <label for="game">게임</label>
+      <input type="checkbox" name="hobbies" id="cook" value="cook">
+      <label for="cook">요리</label>
+      <input type="checkbox" name="hobbies" id="travel" value="travel">
+      <label for="travel">여행</label>
+    </div>
+    <div class="inp-wrap">
+      <select name="mobile">
+        <option value="1">SKT</option>
+        <option value="2">KT</option>
+        <option value="3">LGU+</option>
+      </select>
+      <input type="text" name="mobile">
+    </div>
+    <div class="btn-wrap">
+      <button type="submit">제출</button>
+    </div>
+  </form>
+  
+  <script>
+    document.getElementById('join-form').addEventListener('submit', (e)=>{
+      //이름 입력 여부 검사(빈 문자열 검사)
+      const name = document.getElementById('name');
+      if(name.value === ''){
+        alert('이름은 필수입니다.');
+        name.focus();        //입력 상자에 자동으로 커서 두기
+        e.preventDefault();  //submit 방지(요청 방지)
+        return;              //이벤트 핸들러 종료(아래 코드들이 실행되지 않도록 함수 종료)
+      }
+      
+      //이메일 형식 검사(정규식 검사)
+      const regEmail = /^[A-Za-z0-9-_]+@[A-Za-z0-9]+(\.[A-Za-z]{2,6}){1,2}$/;
+      const email = document.getElementById('email');
+      if ( !regEmail.test(email.value) ){
+        alert('이메일의 형식을 확인하세요.');
+        email.focus();       //입력 상자에 자동으로 커서 두기
+        e.preventDefault();  //submit 방지(요청 방지)
+        return;              //이벤트 핸들러 종료(아래에 더 이상 코드가 없으므로 생략 가능)
+      }
+    })
+    
+  </script>
+
+</body>
+</html>
