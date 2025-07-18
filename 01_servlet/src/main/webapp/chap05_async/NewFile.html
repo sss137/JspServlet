@@ -12,7 +12,7 @@
     //   })
     
     //2) 고전 이벤트 방식(이 방식도 자주 사용 됩니다.)
-  onload = function(e) {
+  onload = function() {
     const btnJson = document.getElementById("btn-json");
     btnJson.addEventListener("click", () => {
       fetch("/01_servlet/JsonResponse", {method: "get"}) //복습) promise 안에 response 객체 안에 promise 안에 JSON 구조
@@ -30,7 +30,7 @@
     })
     
     const btnXml = document.getElementById("btn-xml");
-    btnXml.addEventListener("click", (e) => {
+    btnXml.addEventListener("click", () => {
       fetch("/01_servlet/XmlResponse")
         .then(response => response.text())
         .then(xml => {
