@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *    2) 클라이언트 요청을 처리
  *    3) MVC 패턴에서 주로 Controller 역할 담당
  *    4) 웹 컨테이너( = 서블릿 컨테이너, Tomcat) 안에서 동작( = 하나의 애플리케이션에서 동일한 이름의 서블릿은 사용 불가)
- *    5) 객체는 싱글톤(Singleton)으로 관리(객체를 하나만 만들 수 있게 코드상으로 막을 수 있다는 뜻?)
+ *    5) 객체는 싱글톤(Singleton)으로 관리(객체를 하나만 생성)
  *    6) 다양한 형식(HTML, JSON, XML 등)으로 응답 가능
  */
 
@@ -26,10 +26,11 @@ import javax.servlet.http.HttpServletResponse;
 //매핑(Mapping) = 요청 주소(URL) → 처리 코드(서블릿, 메서드 등)를 연결하는 것입니다.
 //@WebServlet 서블릿에서 매핑하는 어노테이션 방법
 
-//@WebServlet("/RequestServlet")  //현재 서블릿의 요청 주소(요청 주소 = URL Mapping, URL Pattern). 디폴트는 서블릿 이름입니다.
+//@WebServlet("/RequestServlet")  //현재 서블릿의 요청 주소(URL Mapping). 디폴트는 서블릿 이름입니다.
 //@WebServlet("/hello")                      //바뀐 서블릿의 요청 주소.
 //@WebServlet({"/RequestServlet", "/hello"}) //배열로 여러 요청 주소를 전달할 수 있습니다.
-@WebServlet("*.do")                          //.do로 끝나는 모든 요청 주소를 처리합니다.
+
+@WebServlet("*.do")                          //.do로 끝나는 모든 요청 주소를 처리합니다.(URL Pattern)
 
 public class RequestServlet extends HttpServlet {
 
@@ -84,7 +85,9 @@ public class RequestServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);  //post 요청으로 doPost() 메소드가 실행되면 doGet() 메소드를 직접 실행합니다.
+	
+	  doGet(request, response);  //post 요청으로 doPost() 메소드가 실행되면 doGet() 메소드를 직접 실행합니다.
+
 	}
 
 }
