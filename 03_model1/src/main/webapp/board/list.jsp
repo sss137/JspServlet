@@ -14,7 +14,7 @@
 <body>
   <h1>Board 목록 보기</h1>
   
-  <a href="${contextPath}/board/registForm.jsp" />게시글등록하러가기</a>
+  <a href="${contextPath}/board/registForm.jsp" />게시글등록하러가기</a>  
   
   <c:set var="boards" value="${BoardDAO.getInstance().getBoards()}" />
  
