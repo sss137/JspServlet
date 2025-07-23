@@ -29,6 +29,7 @@ public class BoardDaoImpl implements BoardDao {
   private BoardDaoImpl() {}
   
   private static BoardDao dao = new BoardDaoImpl();
+  
   public static BoardDao getInstance() {
     return dao;
   }

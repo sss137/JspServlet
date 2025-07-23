@@ -8,7 +8,7 @@ import model.dto.BoardDTO;
 public interface BoardDao {
 
   public abstract Connection getConnection();
-  public abstract void close(); //왜 임플 안 하지?
+  public abstract void close(); 
   
   public abstract List<BoardDTO> getBoards();
   public abstract BoardDTO getBoardById(int bid);

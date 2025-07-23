@@ -14,16 +14,16 @@
 
   <%
   //----- 파라미터로 전달된 bid 받기
-      request.setCharacterEncoding("UTF-8");
-      int bid = 0;
-      try {
+  request.setCharacterEncoding("UTF-8");
+  int bid = 0;
+  try {
     bid = Integer.parseInt(request.getParameter("bid"));
-      } catch (Exception e) {
+  } catch (Exception e) {
     bid = 0;
-      }
-      //----- bid값을 가진 Board 가져오기
-      BoardDTO board = BoardDAO.getInstance().getBoardById(bid);
-      pageContext.setAttribute("board", board);
+  }
+  //----- bid값을 가진 Board 가져오기
+  BoardDTO board = BoardDAO.getInstance().getBoardById(bid);
+  pageContext.setAttribute("board", board);
   %>
   
   <h1>${board.title}</h1>

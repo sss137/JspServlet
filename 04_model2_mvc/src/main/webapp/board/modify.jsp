@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h1>게시글 편집 화면</h1>
 
 </body>
 </html>

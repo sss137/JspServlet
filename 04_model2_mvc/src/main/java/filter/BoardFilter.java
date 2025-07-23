@@ -21,8 +21,6 @@ public class BoardFilter extends HttpFilter implements Filter {
 	  HttpServletRequest req = (HttpServletRequest)request;
 	  req.setCharacterEncoding("UTF-8");
 	  
-	  System.out.println("필터왔다.");
-		
 	  //필터 동작 후 서블릿 실행
 		chain.doFilter(request, response);
 		
