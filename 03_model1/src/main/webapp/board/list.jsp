@@ -12,12 +12,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+
   <h1>Board 목록 보기</h1>
-  
-  <a href="${contextPath}/board/registForm.jsp" />게시글등록하러가기</a>  
-  
+
+  <a href="${contextPath}/board/registForm.jsp">게시글등록하러가기</a>
+
   <c:set var="boards" value="${BoardDAO.getInstance().getBoards()}" />
- 
+  
   <table border="1">
     <thead>
       <tr>
@@ -33,14 +34,16 @@
           <td colspan="4">첫 게시글의 주인공이 되어 보세요.</td>
         </tr>
       </c:if>
-      <c:forEach var="board" items="${boards}">
-        <tr>
-          <td>${board.bid}</td>
-          <td>${board.user.uid}</td>
-          <td>${board.title}</td>
-          <td>${board.createdAt}</td>
-        </tr>
-      </c:forEach>
+      <c:if test="${not empty boards}">
+        <c:forEach var="board" items="${boards}">
+          <tr>
+            <td>${board.bid}</td>
+            <td>${board.user.uid}</td>
+            <td><a href="${contextPath}/board/detail.jsp?bid=${board.bid}">${board.title}</a></td> <%-- 상세보기 기능을 넣을 때 파라미터 값을 지정해주는 것을 권장 --%>
+            <td>${board.createdAt}</td>
+          </tr>
+        </c:forEach>
+      </c:if>
     </tbody>
   </table>
 

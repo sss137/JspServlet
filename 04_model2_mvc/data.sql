@@ -10,6 +10,6 @@ INSERT INTO tbl_board(uid, title, content) VALUES
   
 DELETE
 FROM db_jdbc.tbl_board
-WHERE bid = 14; 
- 
+WHERE bid = 14;
+  
 COMMIT;
