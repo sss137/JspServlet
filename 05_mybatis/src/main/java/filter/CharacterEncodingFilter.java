@@ -16,7 +16,7 @@ import javax.servlet.http.HttpFilter;
  * web.xml의 <fliter-mapping> 태그가 우선적으로 고려되지만, 실행 순서가 보장되어 있지 않습니다.
  */
 
-@WebFilter("/*")
+//@WebFilter("/*")
 
 public class CharacterEncodingFilter extends HttpFilter implements Filter {
 
