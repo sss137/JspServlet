@@ -23,7 +23,7 @@ import service.BoardServiceImpl;
 
 /*
  * 요청 방식  URL                                      설명
- * -----------------------------------------------------------------------------------
+ * -----------------------------------------------------------------------------------------------
  * GET        /board/list.do                           게시판 목록 보기(전체 게시글 리스트)
  * GET        /board/detail.do?bid=1&code=detail       게시글 상세 보기(번호가 1인 글)
  * GET        /board/registForm.do                     게시글 작성 폼 보기(글쓰기 페이지 열기)
@@ -69,17 +69,17 @@ public class BoardController extends HttpServlet {
       af = boardService.registBoard(request);
       break;
     case "/board/modifyForm.do": 
-      af = new ActionForward("/board/modify.jsp", false);
+      af = boardService.getBoardById(request);
       break;
     case "/board/modify.do":
-      af = new ActionForward("/board/detail.jsp", false);   //확인 필요
+      af = boardService.modifyBoard(request);
       break;
     case "/board/remove.do":
       af = boardService.removeBoard(request);
       break;
       
     default:   //잘못된 요청이 왔을 경우
-      af = new ActionForward("/main.jsp", false);
+      af = new ActionForward(request.getContextPath() + "/main.do", true);
     }
     
     //이동

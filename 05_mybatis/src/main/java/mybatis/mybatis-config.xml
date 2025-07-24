@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+<!-- 프로퍼티 파일을 이용한 환경 변수 설정 -->
+<properties resource="mybatis/mybatis.properties"/>
+
+<!-- 클래스에 별명 등록(DTO) -->
+<typeAliases>
+  <typeAlias type="model.dto.BoardDTO" alias="BoardDTO"/>
+  <typeAlias type="model.dto.UserDTO" alias="UserDTO"/>
+</typeAliases>
+
+<!-- Connection 생성 -->
+<environments default="development">
+  <environment id="development">
+    <transactionManager type="JDBC"/>
+    <dataSource type="POOLED">
+      <property name="driver" value="${driver}"/>
+      <property name="url" value="${url}"/>
+      <property name="username" value="${username}"/>
+      <property name="password" value="${password}"/>
+    </dataSource>
+  </environment>
+</environments>
+
+<!-- Mapper(쿼리문을 가진 파일) 등록 -->
+<mappers>
+  <mapper resource="mybatis/boardMapper.xml"/>
+  <mapper resource="mybatis/userMapper.xml"/>
+  <!-- <mapper resource="mybatis/*Mapper.xml"/>  -->
+</mappers>
+
+</configuration>
+
+
+
+
