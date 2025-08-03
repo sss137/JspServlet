@@ -15,7 +15,8 @@
   onload = function() {
     const btnJson = document.getElementById("btn-json");
     btnJson.addEventListener("click", () => {
-      fetch("/01_servlet/JsonResponse", {method: "get"}) //복습) promise 안에 response 객체 안에 promise 안에 JSON 구조
+      fetch("/01_servlet/JsonResponse", {method: "get"}) //복습) fetch() → Promise → (then)response 객체
+                                                         //      response.json() → Promise → (then)json 데이터
         .then(response => response.json())
         .then(json => {
           console.log(json)
@@ -25,6 +26,7 @@
             ul += `<li>감독 ${json.info.director}</li>`;
             ul += `<li>장르 ${json.info.genre}</li>`;
             ul += `<li>배우 ${json.actors.join(',')}</li>`;
+            ul += "</ul>";
             document.getElementById("div-json").innerHTML = ul;
           })
     })

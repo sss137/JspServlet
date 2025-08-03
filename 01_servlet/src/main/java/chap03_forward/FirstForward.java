@@ -27,7 +27,7 @@ public class FirstForward extends HttpServlet {
 	   */
 	  
 	  //SecondForward로 요청(request)과 응답(response) 전달(forward)하기
-	  RequestDispatcher dispatcher = request.getRequestDispatcher("/SecondForward");   //Servlet Path 작성
+	  RequestDispatcher dispatcher = request.getRequestDispatcher("/SecondForward");   //servletPath 작성
 	  dispatcher.forward(request, response);
 		
 	}

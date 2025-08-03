@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/RequestExServlet")  //서블릿 호출(요청)을 위한 주소
+@WebServlet("/RequestExServlet")
 
 public class RequestExServlet extends HttpServlet {
   

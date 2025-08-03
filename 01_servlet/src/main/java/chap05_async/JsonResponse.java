@@ -24,7 +24,6 @@ public class JsonResponse extends HttpServlet {
 
     //JSON 데이터 응답하기
     
-    
     //Java Map 객체
     Map<String, Object> map = new HashMap<>();
     map.put("title", "파묘");

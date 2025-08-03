@@ -17,7 +17,7 @@ public class ResponseServlet extends HttpServlet {
        
 
 	/**
-	 * @param HttpServletResponse response
+	 * HttpServletResponse response
 	 * 1. 서버가 클라이언트에게 HTTP 응답을 보낼 때 사용하는 객체
 	 * 2. 응답 메시지의 상태 코드, 응답 헤더, 응답 바디(본문)를 생성하거나 제어
 	 * 3. 주요 기능
