@@ -50,7 +50,7 @@
       location.href = "${contextPath}/board/list.jsp";
     }
     
-    function deleteBoard() {
+    function deleteBoard() {  
       if(confirm("현재 게시글을 삭제할까요?")) {
         location.href = "${contextPath}/board/remove.jsp?bid=${board.bid}";
       }
