@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/DownloadFile")
-
 public class DownloadFile extends HttpServlet {
 	
   private static final long serialVersionUID = 1L;
@@ -24,7 +23,7 @@ public class DownloadFile extends HttpServlet {
 
 	  //다운로드 해야 할 파일명
 	  String filename = request.getParameter("filename");
-	  String filePath = "D:/storage/" + filename;
+	  String filePath = "C:/storage/" + filename;
 	  
 	  //다운로드 파일의 정보를 확인할 수 있는 File 객체
 	  File file = new File(filePath);
@@ -36,6 +35,7 @@ public class DownloadFile extends HttpServlet {
 	    out.println("<script>alert(파일이 존재하지 않습니다.)</script>");
 	    out.close();
 	    return;
+	    
 	  }
 	  
 	  //다운로드 응답 헤더 구성
@@ -54,15 +54,14 @@ public class DownloadFile extends HttpServlet {
 	    while((readbyte = in.read(b)) != -1) {
 	      out.write(b, 0, readbyte);
 	    }
+	    
 	  }
 	  
 	}
 	  
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	  doGet(request, response);
-	
 	}
 
 }

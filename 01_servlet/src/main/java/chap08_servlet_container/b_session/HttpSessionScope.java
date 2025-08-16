@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/HttpSessionScope")
-
 public class HttpSessionScope extends HttpServlet {
 	
   private static final long serialVersionUID = 1L;
@@ -54,9 +53,7 @@ public class HttpSessionScope extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	  doGet(request, response);
-	
 	}
 
 }

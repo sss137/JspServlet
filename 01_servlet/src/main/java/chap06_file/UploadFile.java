@@ -15,10 +15,9 @@ import javax.servlet.http.Part;
 
 @WebServlet("/UploadFile")
 @MultipartConfig(
-    location = "D:/storage",          //업로드 파일을 저장할 디렉터리 경로
+    location = "C:/storage",          //업로드 파일을 저장할 디렉터리 경로
     maxFileSize = 1024 * 1024 * 10    //크기 10MB 제한
     )
-
 public class UploadFile extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -26,12 +25,12 @@ public class UploadFile extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
     //업로드 한 파일을 저장할 디렉터리 만들기
-    File dir = new File("D:/storage");
+    File dir = new File("C:/storage");
     if(!dir.exists()) {
       dir.mkdirs();
     }
     
-    //업로드 실행
+    //업로드
     Part part = request.getPart("file");
     String filename = System.currentTimeMillis() + "_" + part.getSubmittedFileName();
     part.write(filename);
@@ -58,9 +57,7 @@ public class UploadFile extends HttpServlet {
   }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	  doGet(request, response);
-	
 	}
 
 }

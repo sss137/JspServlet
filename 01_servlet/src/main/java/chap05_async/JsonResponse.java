@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 @WebServlet("/JsonResponse")
-
 public class JsonResponse extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -44,9 +43,7 @@ public class JsonResponse extends HttpServlet {
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     doGet(request, response);
-	
   }
 
 }

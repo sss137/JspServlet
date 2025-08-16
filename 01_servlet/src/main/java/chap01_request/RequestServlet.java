@@ -24,13 +24,12 @@ import javax.servlet.http.HttpServletResponse;
 
 //매핑이란?
 //매핑(Mapping) = 요청 주소(URL) → 처리 코드(서블릿, 메서드, 컨트롤러 등)를 연결하는 것입니다.
-//@WebServlet  <<  @WebServlet은 서블릿을 URL과 매핑해 주는 어노테이션입니다.
+//@WebServlet  <<  URL과 서블릿을 매핑해 주는 어노테이션입니다.
 
 //@WebServlet("/RequestServlet")  //현재 서블릿 요청 주소(URL Mapping). 디폴트는 서블릿 이름입니다.
 //@WebServlet("/hello")                      //바뀐 서블릿 요청 주소.
 //@WebServlet({"/RequestServlet", "/hello"}) //배열로 여러 요청 주소를 전달할 수 있습니다.
 @WebServlet("*.do")                          //.do로 끝나는 모든 요청 주소를 처리합니다.(URL Pattern)
-
 public class RequestServlet extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -55,7 +54,7 @@ public class RequestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//	  //요청 분석하기
+	  //요청 분석하기
 //	  String requestURI = request.getRequestURI();    // /01_servlet/a/b/c.do(전체 주소)
 //	  String contextPath = request.getContextPath();  // /01_servlet(현재 요청이 속한 웹 애플리케이션의 루트 경로(대표 주소). 디폴트는 프로젝트 이름입니다.
 //	                                                  //하나의 웹 프로젝트가 톰캣(같은 웹 서버)에 배포되면, 그것이 하나의 “웹 애플리케이션”이 됩니다.)
@@ -84,9 +83,7 @@ public class RequestServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 	  doGet(request, response);  //post 요청으로 doPost() 메소드가 실행되면 doGet() 메소드를 직접 실행합니다.
-
 	}
 
 }

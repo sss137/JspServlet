@@ -12,9 +12,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- ★★chap05 Core 내용 --%>
-<%-- 
-  Core 라이브러리가 지원하는 태그
+<%--  
+   ★★Core 라이브러리가 지원하는 태그
   1. <c:out>       값 출력
   2. <c:set>       서블릿 컨테이너에 데이터 저장(setAttribute() 대체)
   3. <c:remove>    서블릿 컨테이너의 데이터 저장(removeAttribute() 대체)
@@ -118,9 +117,4 @@ request.setAttribute("products", products);
 
 </body>
 </html>
-
-
-
-
-
 

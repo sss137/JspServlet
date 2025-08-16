@@ -11,8 +11,8 @@
   JSP 내장 객체
   1. 웹 애플리케이션 개발을 쉽게 할 수 있도록 미리 생성해서 제공하는 객체입니다.
   2. JSP에서는 별도의 선언 없이 곧바로 내장 객체를 사용할 수 있습니다.
-  3. 내장 객체 9개
-        Name         Type                                     Data Scope  << 스코프란? 데이터를 저장할 수 있는 영역(범위)
+  3. JSP 내장 객체 9개
+     Name            Type                                     Data Scope  << 스코프란? 데이터를 저장할 수 있는 영역(범위)
      --------------------------------------------------------------------    데이터를 setAttribute()로 저장하고, getAttribute()로 꺼낼 수 있는 공간
      1) request    : javax.servlet.http.HttpServletRequest    requestScope 
      2) response   : javax.servlet.http.HttpServletResponse  
