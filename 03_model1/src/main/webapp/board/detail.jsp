@@ -13,15 +13,16 @@
 <body>
 
   <%
-  //----- 파라미터로 전달된 bid 받기
+  //파라미터로 전달된 bid 받기
   request.setCharacterEncoding("UTF-8");
   int bid = 0;
   try {
     bid = Integer.parseInt(request.getParameter("bid"));
-  } catch (Exception e) {
+  } catch(Exception e) {
     bid = 0;
   }
-  //----- bid값을 가진 Board 가져오기
+  
+  //bid값을 가진 Board 가져오기
   BoardDTO board = BoardDAO.getInstance().getBoardById(bid);
   pageContext.setAttribute("board", board);
   %>
@@ -39,6 +40,7 @@
   <hr>
   
   <button type="button" onclick="list()">목록보기</button>
+  
   <c:if test="${board ne null}">  
     <button type="button" onclick="deleteBoard()">삭제하기</button>
   </c:if>
@@ -47,12 +49,15 @@
     function list() {
       location.href = "${contextPath}/board/list.jsp";
     }
+    
     function deleteBoard() {
-      if (confirm("현재 게시글을 삭제할까요?")) {
+      if(confirm("현재 게시글을 삭제할까요?")) {
         location.href = "${contextPath}/board/remove.jsp?bid=${board.bid}";
       }
+      
     }
   </script>
 
 </body>
 </html>
+

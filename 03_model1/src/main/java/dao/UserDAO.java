@@ -44,8 +44,9 @@ public class UserDAO {
       sql = "SELECT uid, nickname FROM tbl_user ORDER BY uid";
       ps = con.prepareStatement(sql);
       rs = ps.executeQuery();
+      
+      //DB에서 가져온 결과 ResultSet
       while (rs.next()) {
-        //DB에서 가져온 결과 ResultSet
         int uid = rs.getInt(1);
         String nickname = rs.getString(2);
         //결과 ResultSet를 UserDTO로 변환 
@@ -61,6 +62,7 @@ public class UserDAO {
       DBUtils.close(con, ps, rs);
     }
     return users;
+    
   }
   
 }

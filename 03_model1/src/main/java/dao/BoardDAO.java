@@ -43,47 +43,50 @@ public class BoardDAO {
   public List<BoardDTO> getBoards() {
     List<BoardDTO> boards = new ArrayList<>();
     try {
-          con = DBUtils.getConnection();
-          StringBuilder sb = new StringBuilder(); 
-          sb.append("SELECT b.bid, u.uid, u.nickname, b.title, b.content, b.created_at, b.modified_at");
-          sb.append("  FROM tbl_board b INNER JOIN tbl_user u");
-          sb.append("    ON b.uid = u.uid");
-          sb.append(" ORDER BY bid DESC");
-          sb.append(" LIMIT 0, 10");
-          sql = sb.toString();
-          ps = con.prepareStatement(sql);
-          rs = ps.executeQuery();
-          while(rs.next()) {
-            //DB에서 가져온 결과 rs
-            int bid = rs.getInt(1);
-            int uid = rs.getInt(2);
-            String nickname = rs.getString(3);
-            String title = rs.getString(4);
-            String content = rs.getString(5);
-            Timestamp createdAt = rs.getTimestamp(6);
-            Timestamp modifiedAt = rs.getTimestamp(7);
-            UserDTO user = new UserDTO();
-            user.setUid(uid);
-            user.setNickname(nickname);
-            BoardDTO board = new BoardDTO();
-            board.setBid(bid);
-            board.setUser(user);
-            board.setTitle(title);
-            board.setContent(content);
-            board.setCreatedAt(createdAt);
-            board.setModifiedAt(modifiedAt);
-            //변환된 BoardDTO를 List에 저장
-            boards.add(board);
-          }
-        } catch(Exception e) {
-          e.printStackTrace();
-        } finally {
-          DBUtils.close(con, ps, rs);
-        }
+      con = DBUtils.getConnection();
+        StringBuilder sb = new StringBuilder(); 
+        sb.append("SELECT b.bid, u.uid, u.nickname, b.title, b.content, b.created_at, b.modified_at");
+        sb.append("  FROM tbl_board b INNER JOIN tbl_user u");
+        sb.append("    ON b.uid = u.uid");
+        sb.append(" ORDER BY bid DESC");
+        sb.append(" LIMIT 0, 10");
+        sql = sb.toString();
+        ps = con.prepareStatement(sql);
+        rs = ps.executeQuery();
+          
+        //DB에서 가져온 결과 rs
+        while(rs.next()) {
+          int bid = rs.getInt(1);
+          int uid = rs.getInt(2);
+          String nickname = rs.getString(3);
+          String title = rs.getString(4);
+          String content = rs.getString(5);
+          Timestamp createdAt = rs.getTimestamp(6);
+          Timestamp modifiedAt = rs.getTimestamp(7);
+          UserDTO user = new UserDTO();
+          user.setUid(uid);
+          user.setNickname(nickname);
+          BoardDTO board = new BoardDTO();
+          board.setBid(bid);
+          board.setUser(user);
+          board.setTitle(title);
+          board.setContent(content);
+          board.setCreatedAt(createdAt);
+          board.setModifiedAt(modifiedAt);
+          //변환된 BoardDTO를 List에 저장
+          boards.add(board);
+            
+      }
+    } catch(Exception e) {
+      e.printStackTrace();
+    } finally {
+      DBUtils.close(con, ps, rs);
+    }
     return boards;
+    
   }
   
-  //조회(단일 항목)
+  //조회(세부 항목)
   public BoardDTO getBoardById(int bid) {
     BoardDTO board = null;
     try {
@@ -97,8 +100,9 @@ public class BoardDAO {
       ps = con.prepareStatement(sql);
       ps.setInt(1, bid);               //쿼리문의 1번째 ?에 bid 전달하기
       rs = ps.executeQuery();
-     if(rs.next()) {
-        //DB에서 가져온 결과 ResultSet를 BoardDTO로 변환
+      
+      //DB에서 가져온 결과 ResultSet를 BoardDTO로 변환
+      if(rs.next()) {
         UserDTO user = new UserDTO();
         user.setUid(rs.getInt(2));
         user.setNickname(rs.getString(3));
@@ -109,13 +113,15 @@ public class BoardDAO {
         board.setContent(rs.getString("content"));
         board.setCreatedAt(rs.getTimestamp("created_at"));
         board.setModifiedAt(rs.getTimestamp("modified_at"));
-     }
+        
+      }
     } catch(Exception e) {
       e.printStackTrace();
     } finally {
       DBUtils.close(con, ps, rs);
     }
     return board;
+    
   }
   
   //삽입(삽입된 행의 개수 반환)
@@ -129,12 +135,14 @@ public class BoardDAO {
       ps.setString(2, board.getTitle());
       ps.setString(3, board.getContent());
       count = ps.executeUpdate();
-        } catch(Exception e) {
-          e.printStackTrace();
-        } finally {
-          DBUtils.close(con, ps, rs);
-        }
+      
+    } catch(Exception e) {
+      e.printStackTrace();
+    } finally {
+      DBUtils.close(con, ps, rs);
+    }
     return count;
+    
   }
   
   //삭제(삭제된 행의 개수 반환)
@@ -146,12 +154,14 @@ public class BoardDAO {
       ps = con.prepareStatement(sql);
       ps.setInt(1, bid);
       count = ps.executeUpdate();
-        } catch(Exception e) {
-          e.printStackTrace();
-        } finally {
-          DBUtils.close(con, ps, rs);
-        }
+      
+    } catch(Exception e) {
+      e.printStackTrace();
+    } finally {
+      DBUtils.close(con, ps, rs);
+    }
     return count;
+    
   }
   
 }

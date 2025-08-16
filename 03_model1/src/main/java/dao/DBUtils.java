@@ -31,6 +31,7 @@ public class DBUtils {
       if(rs != null) rs.close();
       if(ps != null) ps.close();
       if(con != null) con.close();
+      
     } catch (Exception e) {
       e.printStackTrace();
     }
