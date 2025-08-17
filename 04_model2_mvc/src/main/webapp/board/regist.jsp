@@ -20,20 +20,15 @@
     <option>2</option>
     <option>3</option>
   </select>      
-  
   <br>
   
   <label for="title">제목</label>
   <input type="text" name="title" id="title">
-  
   <br>
   
   <label for="content">내용</label>
-  
   <br>
-  
   <textarea name="content" id ="content" rows="5" cols="30"></textarea>
-  
   <br>
   
   <button type="submit">등록하기</button>

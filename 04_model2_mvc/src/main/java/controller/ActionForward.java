@@ -3,7 +3,6 @@ package controller;
 /**
  * 어디로 이동할 것인지 정보를 view에 저장하고,
  * 어떻게 이동할 것인지 정보를 isRedirect에 저장하는 클래스
- * 
  */
 public class ActionForward {
 

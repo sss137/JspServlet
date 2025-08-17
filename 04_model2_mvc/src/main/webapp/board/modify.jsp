@@ -16,20 +16,15 @@
         method="post">
         
   <input type="hidden" name="bid" value="${board.bid}">      
-        
   <br>
   
   <label for="title">제목</label>
   <input type="text" name="title" id="title" value="${board.title}">
-  
   <br>
   
   <label for="content">내용</label>
-  
   <br>
-  
   <textarea name="content" id ="content" rows="5" cols="30">${board.content}</textarea>
-  
   <br>
   
   <button type="submit">수정하기</button>

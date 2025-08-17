@@ -50,7 +50,6 @@
 </head>
 <body>
 <div class="wrap">
-
   <h1 class="title">게시글 목록 보기</h1>
   
   <a class="regist-form-link" href="${contextPath}/board/registForm.do">신규 게시글 작성</a>
@@ -65,7 +64,7 @@
   </div>
   
   <%--
-  ``내부에서 EL(${})과 템플릿 리터럴(${}) 구분하기
+  `` 내부에서 EL(${})과 템플릿 리터럴(${}) 구분하기
   1. ${~~}: 자바 변수
   2. \${~~}: 자바스크립트 변수
   --%>

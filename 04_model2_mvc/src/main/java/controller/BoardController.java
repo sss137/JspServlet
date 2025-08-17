@@ -30,12 +30,11 @@ import service.BoardServiceImpl;
  * POST       /board/regist.do                         게시글 실제 등록 요청(폼 제출 처리)
  * GET        /board/modifyForm.do?bid=1&code=modify   게시글 수정 폼 보기(1번 글 수정 화면 열기)
  * POST       /board/modify.do                         게시글 실제 수정 요청(수정 폼 제출 처리)
- * GET        /board/remove.do?bid=1                   게시글 삭제 요청(1번 글 삭제)
+ * POST       /board/remove.do?bid=1                   게시글 삭제 요청(1번 글 삭제)
  */
 
 //.do로 끝나는 모든 요청을 처리하는 컨트롤러
 @WebServlet("*.do")
-
 public class BoardController extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -92,9 +91,7 @@ public class BoardController extends HttpServlet {
   }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	  doGet(request, response);
-	
 	}
 
 }

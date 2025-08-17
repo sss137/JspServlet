@@ -9,8 +9,8 @@ import model.dto.BoardDTO;
 import model.dto.UserDTO;
 
 public class BoardServiceImpl implements BoardService {
-
-  //BoardDao 타입의 BoardDaoImli 객체 생성
+  
+  //BoardDao 타입의 BoardDaoImpl 객체 생성
   private BoardDao boardDao = BoardDaoImpl.getInstance();
   
   @Override
@@ -20,16 +20,16 @@ public class BoardServiceImpl implements BoardService {
     
     //list.jsp로 forward(request를 전달하므로 request에 저장한 값도 전달됩니다.)
     return new ActionForward("/board/list.jsp", false);
+    
   }
 
   @Override
   public ActionForward getBoardById(HttpServletRequest request) {
-    
     //요청 파라미터 bid 처리(bid 파라미터 전달이 없거나 정수가 아닌 값이 전달 되면 bid = 0으로 처리)
     int bid = 0;
     try {
       bid = Integer.parseInt(request.getParameter("bid"));
-    } catch (Exception e) {
+    } catch(Exception e) {
       bid = 0;
     }
     
@@ -52,11 +52,11 @@ public class BoardServiceImpl implements BoardService {
     
     //code에 따라 선택된 JSP로 forward
     return af;
+    
   }
 
   @Override
   public ActionForward registBoard(HttpServletRequest request) {
-    
     //form에서 전달된 uid, title, content 받기
     int uid = Integer.parseInt(request.getParameter("uid"));
     String title = request.getParameter("title");
@@ -80,12 +80,12 @@ public class BoardServiceImpl implements BoardService {
     } else {
       view = "/board/registForm.do";
     }
-    return new ActionForward(request.getContextPath() + view, true);     
+    return new ActionForward(request.getContextPath() + view, true);   
+    
   }
 
   @Override
   public ActionForward modifyBoard(HttpServletRequest request) {
-    
     //form으로부터 제출된 bid, title, content 받기
     int bid = Integer.parseInt(request.getParameter("bid"));
     String title = request.getParameter("title");
@@ -115,7 +115,6 @@ public class BoardServiceImpl implements BoardService {
 
   @Override
   public ActionForward removeBoard(HttpServletRequest request) {
-      
     //요청 파라미터 bid 처리(bid 파라미터 전달이 없거나 정수가 아닌 값이 전달 되면 bid = 0으로 처리)
     int bid = 0;
     try {

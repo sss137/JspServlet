@@ -49,10 +49,12 @@ public class BoardDaoImpl implements BoardDao {
       con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/db_jdbc?characterEncoding=UTF-8&serverTimezone=UTC",
             "goodee",
             "goodee");
+      
     } catch(Exception e) {
       e.printStackTrace();
     }
     return con;
+    
   }
   
   //자원해제
@@ -62,9 +64,11 @@ public class BoardDaoImpl implements BoardDao {
       if(rs != null) rs.close();
       if(ps != null) ps.close();
       if(con != null) con.close();
-    } catch (Exception e) {
+      
+    } catch(Exception e) {
       e.printStackTrace();
     }
+    
   }
   
   //조회(목록)
@@ -82,8 +86,9 @@ public class BoardDaoImpl implements BoardDao {
       sql = sb.toString();
       ps = con.prepareStatement(sql);
       rs = ps.executeQuery();
+      
+      //DB에서 가져온 결과 rs
       while(rs.next()) {
-        //DB에서 가져온 결과 rs
         int bid = rs.getInt(1);
         int uid = rs.getInt(2);
         String nickname = rs.getString(3);
@@ -103,6 +108,7 @@ public class BoardDaoImpl implements BoardDao {
         board.setModifiedAt(modifiedAt);
         //변환된 BoardDTO를 List에 저장
         boards.add(board);
+        
       }
     } catch(Exception e) {
       e.printStackTrace();
@@ -110,10 +116,10 @@ public class BoardDaoImpl implements BoardDao {
       close();
     }
     return boards;
+    
   }
-  
 
-  //조회(단일 항목)
+  //조회(세부 항목)
   @Override
   public BoardDTO getBoardById(int bid) {
     BoardDTO board = null;
@@ -128,8 +134,9 @@ public class BoardDaoImpl implements BoardDao {
       ps = con.prepareStatement(sql);
       ps.setInt(1, bid);               //쿼리문의 1번째 ?에 bid 전달하기
       rs = ps.executeQuery();
+      
+     //DB에서 가져온 결과 ResultSet를 BoardDTO로 변환
      if(rs.next()) {
-        //DB에서 가져온 결과 ResultSet를 BoardDTO로 변환
         UserDTO user = new UserDTO();
         user.setUid(rs.getInt(2));
         user.setNickname(rs.getString(3));
@@ -140,6 +147,7 @@ public class BoardDaoImpl implements BoardDao {
         board.setContent(rs.getString("content"));
         board.setCreatedAt(rs.getTimestamp("created_at"));
         board.setModifiedAt(rs.getTimestamp("modified_at"));
+        
      }
     } catch(Exception e) {
       e.printStackTrace();
@@ -147,6 +155,7 @@ public class BoardDaoImpl implements BoardDao {
       close();
     }
     return board;
+    
   }
   
   //삽입(삽입된 행의 개수 반환)
@@ -161,12 +170,14 @@ public class BoardDaoImpl implements BoardDao {
       ps.setString(2, board.getTitle());
       ps.setString(3, board.getContent());
       count = ps.executeUpdate();
-        } catch(Exception e) {
-          e.printStackTrace();
-        } finally {
-          close();
-        }
+      
+    } catch(Exception e) {
+      e.printStackTrace();
+    } finally {
+      close();
+    }
     return count;
+    
   }
   
   
@@ -180,12 +191,14 @@ public class BoardDaoImpl implements BoardDao {
       ps = con.prepareStatement(sql);
       ps.setInt(1, bid);
       count = ps.executeUpdate();
-        } catch(Exception e) {
-          e.printStackTrace();
-        } finally {
-          close();
-        }
+      
+    } catch(Exception e) {
+      e.printStackTrace();
+    } finally {
+      close();
+    }
     return count;
+    
   }
   
   //수정(수정된 행의 개수 반환)
@@ -200,13 +213,16 @@ public class BoardDaoImpl implements BoardDao {
       ps.setString(2, board.getContent());
       ps.setInt(3, board.getBid());
       count = ps.executeUpdate();
+      
     } catch(Exception e) {
       e.printStackTrace();
     } finally {
       close();
     }
     return count;
+    
   }
+  
 }
 
 
