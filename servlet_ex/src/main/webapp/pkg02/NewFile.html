@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div>
+    <form method="post" action="/servlet_ex/gugudan">
+      <div>
+        <button type="button" id="btn-refresh">새로고침</button>
+      </div>
+      <span id="span-dan"></span>
+      <span>X</span>
+      <span id="span-num"></span>
+      <span>=</span>
+      <input type="text"   id="result"     name="result" size="4">
+      <input type="hidden" id="hidden-dan" name="dan">
+      <input type="hidden" id="hidden-num" name="num">
+      <button type="submit">계산</button>
+    </form>
+  </div>
+  <script>
+
+    function gugudan(){
+      var dan = parseInt(Math.random() * 8) + 2;  // 2~9 랜덤 생성
+      var num = parseInt(Math.random() * 9) + 1;  // 1~9 랜덤 생성
+      document.getElementById('span-dan').textContent = dan;
+      document.getElementById('span-num').textContent = num;
+      document.getElementById('hidden-dan').value = dan;
+      document.getElementById('hidden-num').value = num;
+      $('#result').val('').focus();  // 기존에 입력된 답안 지우고 포커스 옮기기(메소드 체이닝을 위해 제이쿼리 이용)
+    }
+    // 초기 화면에 나타나는 구구단
+    gugudan();
+    // 새로고침을 누르면 나타나는 구구단
+    document.getElementById('btn-refresh').addEventListener('click', gugudan);
+    
+  </script>
+</body>
+</html>
